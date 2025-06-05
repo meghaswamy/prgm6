@@ -26,7 +26,7 @@ pipeline
                       git branch: ‘main’, url: ‘https://github.com/prateekcmr/first.git’ 
                } 
           } 
- 
+
           stage(“Build”) 
           { 
               steps 
@@ -72,3 +72,10 @@ chmod +x library/firstmodule.py
     - name: Show message 
       debug: 
         msg: "{{ result.message }}" 
+
+on pressing Enter, select option 0 or 2 which is jdk17 and again press Enter.
+You need to run the command sudo update-alternatives --config java on the terminal and press Enter
+Sudo systemctl start jenkins
+Sudo systemctl status jenkins
+Sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+Next http://localhost:8080 aste
