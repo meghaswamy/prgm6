@@ -1,0 +1,74 @@
+git config --global user.email""
+git init
+git add pom.xml
+git add src
+git commit -m hello
+ssh -keygen -t ed25519 -c ".com"
+cat /home/student/.ssh/id_ed25519.public ssh -ed25519.pub
+git commit -m "CI Pipeline"
+git remote add origin git @github.com: meghaswamy/lab2
+git config --global push autosetupRemote true
+git pull --rebase origin main
+git push origin main
+git branch -M main
+git push origin main
+sudo systemctl status jenkins
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+pipeline 
+{ 
+    agent any 
+    stages 
+    { 
+          stage(“Checkout”) 
+          { 
+               steps 
+               { 
+                      git branch: ‘main’, url: ‘https://github.com/prateekcmr/first.git’ 
+               } 
+          } 
+ 
+          stage(“Build”) 
+          { 
+              steps 
+              { 
+                     sh “mvn clean package” 
+              } 
+          } 
+ 
+           
+          stage(“Test”) 
+          { 
+              steps 
+              { 
+                     sh “mvn test” 
+              } 
+          } 
+      } 
+} 
+#!/usr/bin/python 
+from ansible.module_utils.basic import AnsibleModule 
+ 
+def walk(): 
+    module_args = dict( 
+        name=dict(type='str', required=True) 
+    ) 
+ 
+    module = AnsibleModule(argument_spec=module_args) 
+     result = {"changed": False, "message": f"Welcome, {module.params['name']}!"} 
+    module.exit_json(**result) 
+ 
+if __name__ == '__main__': 
+    walk() 
+chmod +x library/firstmodule.py
+--- - name: Ansible with one module 
+  hosts: localhost 
+  gather_facts: no 
+  tasks: 
+    - name: Welcome friends 
+      firstmodule: 
+        name: "Ansible" 
+      register: result 
+ 
+    - name: Show message 
+      debug: 
+        msg: "{{ result.message }}" 
